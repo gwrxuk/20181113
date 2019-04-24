@@ -4,6 +4,16 @@ import os
 import sys
 import pandas as pd
 import math
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+import matplotlib.font_manager as font_manager
+
+font_dirs = ['./', ]
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+font_list = font_manager.createFontList(font_files)
+font_manager.fontManager.ttflist.extend(font_list)
+print(font_list)
+plt.rcParams['font.family'] = 'DFKai-SB'
 
 docA = []
 docB = []
@@ -32,7 +42,6 @@ for word in docB:
     dictB[word] = dictB[word]+1
 
 result = pd.DataFrame([dictA,dictB])
-print(result)
 
 def computeTF(wordDict,bow):
     tfDict = {}
@@ -73,6 +82,15 @@ def computeTFIDF(tfBow, idfs):
 tfidfBowA = computeTFIDF(tfBowA,idfs)
 tfidfBowB = computeTFIDF(tfBowB,idfs)
 
-pd.DataFrame([tfidfBowA,tfidfBowB])
+df = pd.DataFrame([tfidfBowA,tfidfBowB],index=list("AB"))
 
 
+df = df.sort_values(by='B', axis=1, ascending=False)
+
+dfa = df.iloc[:,0:10].T
+print(dfa.index.values)
+plt.figure()
+
+ax = dfa.plot.bar()
+ax.set_xlabel("文字")
+print(dfa.columns.values)
