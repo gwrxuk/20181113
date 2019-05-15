@@ -217,7 +217,7 @@ class QuotesSpider(scrapy.Spider):
         #check reactions for old posts
         check_reactions = response.xpath("//a[contains(@href,'reaction/profile')]/div/div/text()").get()
         if not check_reactions:
-            print(new.load_item()["text"])       
+            yield(new.load_item()["text"])       
         else:
             new.add_xpath('reactions',"//a[contains(@href,'reaction/profile')]/div/div/text()")              
             reactions = response.xpath("//div[contains(@id,'sentence')]/a[contains(@href,'reaction/profile')]/@href")
@@ -233,7 +233,7 @@ class QuotesSpider(scrapy.Spider):
         new.add_xpath('wow',"//a[contains(@href,'reaction_type=3')]/span/text()")
         new.add_xpath('sigh',"//a[contains(@href,'reaction_type=7')]/span/text()")
         new.add_xpath('grrr',"//a[contains(@href,'reaction_type=8')]/span/text()")     
-        print(new.load_item())       
+        yield(new.load_item())       
 
             
 process = CrawlerProcess({
