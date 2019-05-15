@@ -2,11 +2,15 @@ from scrapy.crawler import CrawlerProcess
 import json
 import scrapy
 import logging
+import scrapy.crawler as crawler
 from scrapy.loader import ItemLoader
 from scrapy.http import FormRequest
 from scrapy.exceptions import CloseSpider
 from datetime import datetime
 from fbcrawl.items import FbcrawlItem, parse_date, parse_date2
+from twisted.internet import reactor
+from multiprocessing import Process, Queue
+from twisted.internet import reactor
 
 
 class JsonWriterPipeline(object):
@@ -217,7 +221,8 @@ class QuotesSpider(scrapy.Spider):
         #check reactions for old posts
         check_reactions = response.xpath("//a[contains(@href,'reaction/profile')]/div/div/text()").get()
         if not check_reactions:
-            yield(new.load_item()["text"])       
+            print(new.load_item()["text"])   
+            yield(new.load_item())
         else:
             new.add_xpath('reactions',"//a[contains(@href,'reaction/profile')]/div/div/text()")              
             reactions = response.xpath("//div[contains(@id,'sentence')]/a[contains(@href,'reaction/profile')]/@href")
@@ -233,12 +238,37 @@ class QuotesSpider(scrapy.Spider):
         new.add_xpath('wow',"//a[contains(@href,'reaction_type=3')]/span/text()")
         new.add_xpath('sigh',"//a[contains(@href,'reaction_type=7')]/span/text()")
         new.add_xpath('grrr',"//a[contains(@href,'reaction_type=8')]/span/text()")     
-        yield(new.load_item())       
+        print(new.load_item())       
+        yield(new.load_item())
 
-            
+
+def run_spider(spider):
+    def f(q):
+        try:
+            runner = crawler.CrawlerRunner({
+    'USER_AGENT':  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+})
+            deferred = runner.crawl(spider)
+            deferred.addBoth(lambda _: reactor.stop())
+            reactor.run()
+            q.put(None)
+        except Exception as e:
+            q.put(e)
+
+    q = Queue()
+    p = Process(target=f, args=(q,))
+    p.start()
+    result = q.get()
+    p.join()
+
+    if result is not None:
+        raise result
+'''        
 process = CrawlerProcess({
     'USER_AGENT':  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
 })
 
 process.crawl(QuotesSpider)
 process.start()
+'''
+run_spider(QuotesSpider)
