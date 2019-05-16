@@ -263,12 +263,11 @@ def run_spider(spider):
 
     if result is not None:
         raise result
-'''        
+     
 process = CrawlerProcess({
     'USER_AGENT':  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
 })
 
 process.crawl(QuotesSpider)
 process.start()
-'''
-run_spider(QuotesSpider)
+
