@@ -2,11 +2,49 @@
 <html>
 <body bgcolor="lightblue">
 
-<form action="http://52.42.170.144:81/faceswap.php" method="post" enctype="multipart/form-data">
+<form action="http://52.42.170.144:81/faceswap.php" method="post" enctype="multipart/form-data" id="file-form">
     請上傳您的照片
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="送出" name="submit">
+    <input type="file" name="fileToUpload" id="fileToUpload" id='file-select'>
+    <input type="submit" value="送出" name="submit" id='upload-button'>
 </form>
 
+    
+    <script>
+        var form = document.getElementById('file-form');
+var fileSelect = document.getElementById('file-select');
+var uploadButton = document.getElementById('upload-button');
+        
+        form.onsubmit = function(event) {
+  event.preventDefault();
+
+  // Update button text.
+
+            var files = fileSelect.files;
+            var formData = new FormData();
+            
+            // Loop through each of the selected files.
+for (var i = 0; i < files.length; i++) {
+  var file = files[i];
+
+
+  // Add the file to the request.
+  formData.append('fileToUpload', file, file.name);
+}
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://52.42.170.144:81/faceswap.php', true);
+            // Set up a handler for when the request finishes.
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    // File(s) uploaded.
+    uploadButton.innerHTML = 'Upload';
+  } else {
+    alert('An error occurred!');
+  }
+};
+  // The rest of the code will go here...
+}
+        
+    </script>
 </body>
 </html>
