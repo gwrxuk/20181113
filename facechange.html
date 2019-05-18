@@ -7,7 +7,7 @@
     <input type="file" name="fileToUpload" id='file-select'>
     <input type="submit" value="送出" name="submit" id='upload-button'>
 </form>
-
+<div id="result"></div>
     
     <script>
         var form = document.getElementById('file-form');
@@ -30,11 +30,11 @@ for (var i = 0; i < files.length; i++) {
   // Add the file to the request.
   formData.append('fileToUpload', file, file.name);
 }
-alert('b');
+document.getElementById('result').innerHTML = 'd';
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://52.42.170.144:81/faceswap.php', true);
             // Set up a handler for when the request finishes.
-            alert('a');
+document.getElementById('result').innerHTML = 'da';
 xhr.onload = function () {
   if (xhr.status === 200) {
     // File(s) uploaded.
