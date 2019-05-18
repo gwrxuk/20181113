@@ -30,10 +30,11 @@ for (var i = 0; i < files.length; i++) {
   // Add the file to the request.
   formData.append('fileToUpload', file, file.name);
 }
-
+alert('b');
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://52.42.170.144:81/faceswap.php', true);
             // Set up a handler for when the request finishes.
+            alert('a');
 xhr.onload = function () {
   if (xhr.status === 200) {
     // File(s) uploaded.
