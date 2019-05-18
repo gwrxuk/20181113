@@ -34,8 +34,9 @@ document.getElementById('result').innerHTML = 'd';
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://52.42.170.144:81/faceswap.php', true);
             // Set up a handler for when the request finishes.
-document.getElementById('result').innerHTML = 'da';
+
 xhr.onload = function () {
+    document.getElementById('result').innerHTML = xhr.status;
   if (xhr.status === 200) {
     // File(s) uploaded.
     uploadButton.innerHTML = 'Upload';
