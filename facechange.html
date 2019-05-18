@@ -36,7 +36,7 @@ document.getElementById('result').innerHTML = 'd';
             // Set up a handler for when the request finishes.
 
 xhr.onload = function () {
-    document.getElementById('result').innerHTML = xhr.status;
+    document.getElementById('result').innerHTML = xhr.status+xhr.responseText;
   if (xhr.status === 200) {
     // File(s) uploaded.
     uploadButton.innerHTML = 'Upload';
