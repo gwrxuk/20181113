@@ -233,7 +233,7 @@ console.log(JSON.stringify(data));
 ];
         var data2=[{"from":[-73.875523,40.781063],"to":[-80.247887,25.792296],"labels":["New York","Maima"],"color":"#05ffd9"},{"from":[-73.875523,40.781063],"to":[-118.2705,33.9984],"labels":[null,"Los Angeles"],"color":"#00ccff"},{"from":[-73.875523,40.781063],"to":[-87.724088,41.917846],"labels":[null,"Chicago"],"color":"#ffc726"},{"from":[-73.875523,40.781063],"to":[-71.058437,42.35902],"labels":[null,"Boston"],"color":"#e9ff20"},{"from":[-73.875523,40.781063],"to":[-75.683057,45.42172],"labels":[null,"Ottawa"],"color":"#99ff1b"}];
 
-        data = data.map(item => { console.log(item.from[0]);return {...item, value: 2}});
+        data = data.map(item => { console.log(item.to[0]);return {...item, value: parseInt(Math.abs(item.to[0]%100))}});
 		
 		
         data2 = data2.map(item => { return {...item, value: parseInt(Math.random()*20)}});
