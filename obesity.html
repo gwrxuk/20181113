@@ -1,0 +1,404 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="https://km.hpa.gov.tw/obesity/TC/">
+<title>
+	衛生福利部國民健康署_肥胖防治網
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><link href="css/main.css" rel="stylesheet" type="text/css" /><link href="css/component.css" rel="stylesheet" type="text/css" /><link href="css/inner.css" rel="stylesheet" type="text/css" /><link href="css/indexbanner.css" rel="stylesheet" type="text/css" /><link href="css/doreen.css" rel="stylesheet" type="text/css" />
+    <!--小日曆的css-->
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+    <!--jquery核心-->
+    
+    <!--<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>-->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!--jquery ui-->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <!--上方主選單的js-->
+    <script src="Scripts/topMenu.js"></script>
+    <!--中文版小日曆的js-->
+    <script src="Scripts/jquery.ui.datepicker-zh-TW.js"></script>
+    <!--image map的js-->
+    <script src="Scripts/jquery.imagemapster.js"></script>
+    <!--FontSizes-->
+    <script src="js/FontSize.js"></script>
+
+    
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="DayHeatCalculate.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTExODYxMjk0MDEPZBYCZg9kFgICAw9kFgQCAw8WAh4EVGV4dAUV5pSd5Y+W54ax6YeP6KiI566X5qmfZAIFD2QWAmYPZBYKAgMPD2QWAh4IZGlzYWJsZWQFCGRpc2FibGVkZAIFDw9kFgIfAQUIZGlzYWJsZWRkAgcPD2QWAh8BBQhkaXNhYmxlZGQCCQ8PZBYCHwEFCGRpc2FibGVkZAILDw9kFgIfAQUIZGlzYWJsZWRkZGu3u8XysoiF31qPyCW8bWK8wXwS" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8842E9AA" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWDgL/9aopAoyNw+sPAsqakY8IApTIyZEHAr6k7PEPAr6kyNIPApeHta8EAvLQ96wCAuvelJcFAsmOreEFAvyTreEFArj5xf0DAtD3mfgPAvHSs+YKeuCbY68ivpM5Yy/3ye8qDgN1QyA=" />
+</div>
+        <div class="Wrap">
+            <!--midWrap beg-->
+            <div class="midWrap">
+                <!-- print beg -->
+                <div class="mid">
+                   
+                    <h2 class="mainTitle">
+                        <img id="ctl00_imgMenuIcon" alt="" src="images/icon/titleIcon_News.png" style="border-width:0px;" />
+                        攝取熱量計算機
+                    </h2>
+                   
+                           
+                
+    <div id="ctl00_ContentPlaceHolder1_Panel1" class="dishesCalculatorWrap new">
+	
+        <div class="dishesInfo">
+            <img alt="我工作一天所需多少熱量? 根據每日活動量，可計算所需熱量。" title="我工作一天所需多少熱量? 根據每日活動量，可計算所需熱量。" src="images/dishesContentInfo.png" class="dishesContentInfo" />
+            <img alt="輕度工作　大部分從事靜態或坐著的工作　例如：家庭主婦、坐辦公室的上班族、銷售員" title="輕度工作 大部分從事靜態或坐著的工作 例如：家庭主婦、坐辦公室的上班族、銷售員" src="images/workType1.png" class="workType1" />
+            <img alt="中度工作　從事機械操作、接待或家事等站立活動較多的工作　例如：保母、護士、服務生" title="中度工作　從事機械操作、接待或家事等站立活動較多的工作　例如：保母、護士、服務生" src="images/workType2.png" class="workType2" />
+            <img alt="重度工作　從事農耕、漁業、建築等的重度使用體力之工作　例如：運動員、搬家工人" title="重度工作　從事農耕、漁業、建築等的重度使用體力之工作　例如：運動員、搬家工人" src="images/workType3.png" class="workType3" />
+        </div>
+        <div class="dishesCalculatorWrap new">
+            <table title="" class="CalculatorBtn1">
+                <tr>
+                    <th colspan="4">
+                        <div id="ctl00_ContentPlaceHolder1_StateWord">請輸入工作量</div>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="4" id="labelBox">
+                        <div id="InputWord"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding-left: 0.3em;">
+                        <a class="workType" id="workType1" href="javascript:void(0)" onclick="workTypeClick('輕度工作');" onkeypress="workTypeClick('輕度工作');">
+                            <img alt="輕度工作" src="images/opacity.png" /></a>
+                        <a class="workType" id="workType2" href="javascript:void(0)" onclick="workTypeClick('中度工作');" onkeypress="workTypeClick('中度工作');">
+                            <img alt="中度工作" src="images/opacity.png" /></a>
+                        <a class="workType" id="workType3" href="javascript:void(0)" onclick="workTypeClick('重度工作');" onkeypress="workTypeClick('重度工作');">
+                            <img alt="重度工作" src="images/opacity.png" /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a class="number" id="number7" href="javascript:void(0)" onclick="NumClick('7');" onkeypress="NumClick('7');">
+                        <img alt="7" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number8" href="javascript:void(0)" onclick="NumClick('8');" onkeypress="NumClick('8');">
+                        <img alt="8" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number9" href="javascript:void(0)" onclick="NumClick('9');" onkeypress="NumClick('9');">
+                        <img alt="9" src="images/opacity.png" /></a></td>
+                    <td rowspan="2"><a class="sexuality" id="male" href="javascript:void(0)" onclick="SexClick('男');" onkeypress="SexClick('男');">
+                        <img alt="男" src="images/opacity.png" /></a></td>
+                </tr>
+                <tr>
+                    <td><a class="number" id="number4" href="javascript:void(0)" onclick="NumClick('4');" onkeypress="NumClick('4');">
+                        <img alt="4" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number5" href="javascript:void(0)" onclick="NumClick('5');" onkeypress="NumClick('5');">
+                        <img alt="5" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number6" href="javascript:void(0)" onclick="NumClick('6');" onkeypress="NumClick('6');">
+                        <img alt="6" src="images/opacity.png" /></a></td>
+                </tr>
+                <tr>
+                    <td><a class="number" id="number1" href="javascript:void(0)" onclick="NumClick('1');" onkeypress="NumClick('1');">
+                        <img alt="1" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number2" href="javascript:void(0)" onclick="NumClick('2');" onkeypress="NumClick('2');">
+                        <img alt="2" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="number3" href="javascript:void(0)" onclick="NumClick('3');" onkeypress="NumClick('3');">
+                        <img alt="3" src="images/opacity.png" /></a></td>
+                    <td rowspan="2"><a class="sexuality" id="female" href="javascript:void(0)" onclick="SexClick('女');" onkeypress="SexClick('女');">
+                        <img alt="女" src="images/opacity.png" /></a></td>
+                </tr>
+                <tr>
+                    <td><a class="number" id="number0" href="javascript:void(0)" onclick="NumClick('0');" onkeypress="NumClick('0');">
+                        <img alt="0" src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="dot" href="javascript:void(0)" onclick="NumClick('.');" onkeypress="NumClick('.');">
+                        <img alt="." src="images/opacity.png" /></a></td>
+                    <td><a class="number" id="ok" href="javascript:void(0)" onclick="CheckClick();" onkeypress="CheckClick();">
+                        <img alt="確定" src="images/opacity.png" /></a></td>
+                </tr>
+            </table>
+            <div class="dishesCalculatorInfo" style="padding-top:5em;">
+                <p>選擇一種活動量及填寫基本資料後按下送出，即可計算您每日所需的熱量!</p>
+                <ul id="personalInfo">
+                    <li>您的工作量：<input name="ctl00$ContentPlaceHolder1$txtType" type="text" id="ctl00_ContentPlaceHolder1_txtType" disabled="disabled" /></li>
+                    <li>您的性別：<input name="ctl00$ContentPlaceHolder1$txtSex" type="text" id="ctl00_ContentPlaceHolder1_txtSex" disabled="disabled" /></li>
+                    <li>您的年齡：<input name="ctl00$ContentPlaceHolder1$txtAge" type="text" id="ctl00_ContentPlaceHolder1_txtAge" disabled="disabled" />歲</li>
+                    <li>您的身高：<input name="ctl00$ContentPlaceHolder1$txtHeight" type="text" id="ctl00_ContentPlaceHolder1_txtHeight" disabled="disabled" />cm</li>
+                    <li>您的體重：<input name="ctl00$ContentPlaceHolder1$txtWeight" type="text" id="ctl00_ContentPlaceHolder1_txtWeight" disabled="disabled" />kg</li>
+                </ul>
+                <div class="btnWrap">
+                    <input name="ctl00$ContentPlaceHolder1$hdType" type="hidden" id="ctl00_ContentPlaceHolder1_hdType" />
+                    <input name="ctl00$ContentPlaceHolder1$hdSex" type="hidden" id="ctl00_ContentPlaceHolder1_hdSex" />
+                    <input name="ctl00$ContentPlaceHolder1$hdAge" type="hidden" id="ctl00_ContentPlaceHolder1_hdAge" />
+                    <input name="ctl00$ContentPlaceHolder1$hdHeight" type="hidden" id="ctl00_ContentPlaceHolder1_hdHeight" />
+                    <input name="ctl00$ContentPlaceHolder1$hdWeight" type="hidden" id="ctl00_ContentPlaceHolder1_hdWeight" />
+                    <input name="ctl00$ContentPlaceHolder1$StateNo" type="hidden" id="ctl00_ContentPlaceHolder1_StateNo" value="0" />
+					<a href="javascript:void(0)" class="searchBtn" title="回上一步" id="StepBack" style="display:none;">回上一步</a>
+					<a href="javascript:void(0)" class="searchBtn" title="清除" id="clear">清除</a>
+                    <br/>
+                    <a id="ctl00_ContentPlaceHolder1_lbtnReset" title="重新輸入" class="searchBtn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$lbtnReset','')">重新輸入</a>
+                    <a id="ctl00_ContentPlaceHolder1_lbtnSend" class="searchBtn" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$lbtnSend','')">送出</a>
+                </div>
+            </div>
+        </div>
+    
+</div>
+    
+    <!--<a id="backPage" class="backBtn" onclick="javascript:history.go(-1);"></a>-->
+    <!--<a id="ctl00_ContentPlaceHolder1_HyperLink1" class="backBtn" href="Eat.aspx"><img src="images/btn/backBtn.jpg" style="border-width:0px;" /></a>-->
+     <!--<a href="Eat.aspx" title="回上頁" class="backBtn"><img style="border-width:0px;" src="images/btn/backBtn.jpg" alt="回上頁"></a>-->
+    
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        });
+
+
+        $("#StepBack").click(function (event) {
+            var State = $("#ctl00_ContentPlaceHolder1_StateNo").val();
+            //清除按鈕
+            $("#clear").show();
+            switch (State) {
+                case "5":
+                    $("#ctl00_ContentPlaceHolder1_StateNo").val("4");
+                    //$("#StateWord").text("請輸入體重(kg)");
+                    $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入體重(kg)");
+                    $("#ctl00_ContentPlaceHolder1_txtWeight").val("");
+                    $("#ctl00_ContentPlaceHolder1_hdWeight").val("");
+                    $("#InputWord").text("");
+
+                    break;
+                case "4":
+                    $("#ctl00_ContentPlaceHolder1_StateNo").val("3");
+                    //$("#StateWord").text("請輸入身高(m)");
+                    $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入身高(cm)");
+                    $("#ctl00_ContentPlaceHolder1_txtHeight").val("");
+                    $("#ctl00_ContentPlaceHolder1_hdHeight").val("");
+                    $("#InputWord").text("");
+                    break;
+                case "3":
+                    $("#ctl00_ContentPlaceHolder1_StateNo").val("2");
+                    //$("#StateWord").text("請輸入年齡");
+                    $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入年齡");
+                    $("#ctl00_ContentPlaceHolder1_txtAge").val("");
+                    $("#ctl00_ContentPlaceHolder1_hdAge").val("");
+                    $("#InputWord").text("");
+                    break;
+                case "2":
+                    $("#ctl00_ContentPlaceHolder1_StateNo").val("1");
+                    //$("#StateWord").text("請輸入性別");
+                    $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入性別");
+                    $("#ctl00_ContentPlaceHolder1_txtSex").val("");
+                    $("#ctl00_ContentPlaceHolder1_hdSex").val("");
+                    $("#InputWord").text("");
+                    break;
+                case "1":
+                    $("#ctl00_ContentPlaceHolder1_StateNo").val("0");
+                    //$("#StateWord").text("請輸入工作量");
+                    $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入工作量");
+                    $("#ctl00_ContentPlaceHolder1_txtType").val("");
+                    $("#ctl00_ContentPlaceHolder1_hdType").val("");
+                    $("#InputWord").text("");
+                    //上一步按鈕
+                    $("#StepBack").hide();
+                    break;
+                case "0":
+                    alert("已是第一步");
+                    break;
+            }
+        });
+
+        $("#clear").click(function (event) {
+            $("#InputWord").text("");
+        });
+
+        $("#workType1").click(function (event) {
+            event.preventDefault();
+            $("#workType1 img").attr("src", "images/Calculator/CalculatorBtn_workType1_hover.png");
+            $("#workType2 img").attr("src", "images/Calculator/CalculatorBtn_workType2.png");
+            $("#workType3 img").attr("src", "images/Calculator/CalculatorBtn_workType3.png");
+        });
+
+        $("#workType2").click(function (event) {
+            event.preventDefault();
+            $("#workType1 img").attr("src", "images/Calculator/CalculatorBtn_workType1.png");
+            $("#workType2 img").attr("src", "images/Calculator/CalculatorBtn_workType2_hover.png");
+            $("#workType3 img").attr("src", "images/Calculator/CalculatorBtn_workType3.png");
+        });
+
+        $("#workType3").click(function (event) {
+            event.preventDefault();
+            $("#workType1 img").attr("src", "images/Calculator/CalculatorBtn_workType1.png");
+            $("#workType2 img").attr("src", "images/Calculator/CalculatorBtn_workType2.png");
+            $("#workType3 img").attr("src", "images/Calculator/CalculatorBtn_workType3_hover.png");
+        });
+
+        $("#male").click(function (event) {
+            if ($("#ctl00_ContentPlaceHolder1_StateNo").val() == "1") {
+                event.preventDefault();
+                $("#male img").attr("src", "images/Calculator/CalculatorBtn_male_hover.png");
+                $("#female img").attr("src", "images/Calculator/CalculatorBtn_female.png");
+            }
+        });
+
+        $("#female").click(function (event) {
+            if ($("#ctl00_ContentPlaceHolder1_StateNo").val() == "1") {
+                event.preventDefault();
+                $("#male img").attr("src", "images/Calculator/CalculatorBtn_male.png");
+                $("#female img").attr("src", "images/Calculator/CalculatorBtn_female_hover.png");
+            }
+        });
+
+
+        function workTypeClick(str) {
+            if ($("#ctl00_ContentPlaceHolder1_StateNo").val() == "0") {
+                $("#InputWord").text(str);
+            }
+        }
+
+        function SexClick(str) {
+            if ($("#ctl00_ContentPlaceHolder1_StateNo").val() == "1") {
+                $("#InputWord").text(str);
+            }
+        }
+
+        function NumClick(str) {
+            if ($("#ctl00_ContentPlaceHolder1_StateNo").val() == "2" || $("#ctl00_ContentPlaceHolder1_StateNo").val() == "3" || $("#ctl00_ContentPlaceHolder1_StateNo").val() == "4") {
+                $("#InputWord").text($("#InputWord").text() + str);
+            }
+        }
+
+        function CheckClick() {
+            var State = $("#ctl00_ContentPlaceHolder1_StateNo").val();
+            switch (State) {
+                case "0":
+                    if ($("#InputWord").text() != "") {
+                        $("#ctl00_ContentPlaceHolder1_txtType").val($("#InputWord").text());
+                        switch ($("#InputWord").text()) {
+                            case "輕度工作":
+                                $("#ctl00_ContentPlaceHolder1_hdType").val("0");
+                                break;
+                            case "中度工作":
+                                $("#ctl00_ContentPlaceHolder1_hdType").val("1");
+                                break;
+                            case "重度工作":
+                                $("#ctl00_ContentPlaceHolder1_hdType").val("2");
+                                break;
+                        }
+                        $("#ctl00_ContentPlaceHolder1_StateNo").val("1");
+
+                        //$("#StateWord").text("請輸入性別");
+                        $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入性別");
+                        $("#InputWord").text("");
+                        //上一步按鈕
+                        $("#StepBack").show();
+                    } else {
+                        alert('請選擇工作量！！');
+                    }
+                    break;
+                case "1":
+                    if ($("#InputWord").text() != "") {
+                        $("#ctl00_ContentPlaceHolder1_txtSex").val($("#InputWord").text());
+                        switch ($("#InputWord").text())
+                        {
+                            case "男":
+                                $("#ctl00_ContentPlaceHolder1_hdSex").val("1");
+                                break;
+                            case "女":
+                                $("#ctl00_ContentPlaceHolder1_hdSex").val("0");
+                                break;
+                        }
+
+                        $("#ctl00_ContentPlaceHolder1_StateNo").val("2");
+                        //$("#StateWord").text("請輸入年齡");
+                        $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入年齡");
+                        $("#InputWord").text("");
+                        //上一步按鈕
+                        $("#StepBack").show();
+                    } else {
+                        alert("請選擇性別");
+                    }
+                    break;
+                case "2":
+                    if ($("#InputWord").text() != "") {
+                        $("#ctl00_ContentPlaceHolder1_txtAge").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_hdAge").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_StateNo").val("3");
+                        //$("#StateWord").text("請輸入身高(m)");
+                        $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入身高(cm)");
+                        $("#InputWord").text("");
+                        //上一步按鈕
+                        $("#StepBack").show();
+                    } else {
+                        alert("請輸入年齡！！");
+                    }
+                    break;
+                case "3":
+                    if ($("#InputWord").text() != "") {
+                        $("#ctl00_ContentPlaceHolder1_txtHeight").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_hdHeight").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_StateNo").val("4");
+                        //$("#StateWord").text("請輸入體重(kg)");
+                        $("#ctl00_ContentPlaceHolder1_StateWord").text("請輸入體重(kg)");
+                        $("#InputWord").text("");
+                        //上一步按鈕
+                        $("#StepBack").show();
+                    } else {
+                        alert("請輸入身高");
+                    }
+
+                    break;
+                case "4":
+                    if ($("#InputWord").text() != "") {
+                        $("#ctl00_ContentPlaceHolder1_txtWeight").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_hdWeight").val($("#InputWord").text());
+                        $("#ctl00_ContentPlaceHolder1_StateNo").val("5");
+                        //$("#StateWord").text("請送出計算結果");
+                        $("#ctl00_ContentPlaceHolder1_StateWord").text("請送出計算結果");
+                        $("#InputWord").text("請送出計算結果");
+                        //上一步按鈕
+                        $("#StepBack").show();
+                        //清除按鈕
+                        $("#clear").hide();
+                    } else {
+                        alert("請輸入體重");
+                    }
+                    break;
+            }
+        }
+    </script>
+
+
+
+                </div> 
+                <!-- print end -->
+            </div>
+           
+        </div>
+    </form>
+</body>
+</html>
