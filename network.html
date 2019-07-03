@@ -40,7 +40,7 @@
 						.append("g")
 						.attr("transform","translate("+margin.left+","+margin.top+")");	
 	//Load External Data
-	d3.json("https://bl.ocks.org/mohdsanadzakirizvi/raw/6fc325042ce110e1afc1a7124d087130/got_social_graph.json", function(dataset){
+	d3.json("tengo.json", function(dataset){
 		//Extract data from dataset
 		var nodes = dataset.nodes,
 			links = dataset.links;
