@@ -19,6 +19,14 @@ https://www.analyticsvidhya.com/blog/2017/08/visualizations-with-d3-js/
 			  pointer-events: none;
 			  font: sans-serif;
 			}
+									       
+									       html{
+				-ms-transform: scale(0.7);
+				-moz-transform: scale(0.7);
+				 -o-transform: scale(0.7); 
+				-webkit-transform: scale(0.7); transform: scale(0.8);
+				 -ms-transform-origin: 0 0; -moz-transform-origin: 0 0; -o-transform-origin: 0 0; -webkit-transform-origin: 0 0; transform-origin: 0 0;"
+			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
@@ -26,10 +34,10 @@ https://www.analyticsvidhya.com/blog/2017/08/visualizations-with-d3-js/
 	<script type="text/javascript">
 	//Set margins and sizes
 	var margin = {
-		top: 20,
+	top: 50,
 		bottom: 50,
 		right: 30,
-		left: 50
+		left: 0
 	};
 	var width = 1960 - margin.left - margin.right;
 	var height = 1700 - margin.top - margin.bottom;
